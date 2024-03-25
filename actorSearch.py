@@ -41,6 +41,7 @@ def find_roles_by_movie(ID):
     q = f"@movieID:{ID}"
     results = movieDB.ft("idx:roles").search(q)
     return results
+
 def q1(name):
     movs =[]
     # print(name)
@@ -49,15 +50,9 @@ def q1(name):
     for movies in moviesList:
         newMovie = find_movie_by_ID(movies["movieID"]).docs
         movs.append(newMovie[0]["title"])
-        print(newMovie[0]["title"])
-
-    print("list")
-
+        # print(newMovie[0]["title"])
 
     return movs
-
-
-    
 
 app = Flask(__name__)
 
@@ -73,12 +68,16 @@ def home():
         return render_template("home.html")
 
 @app.route("/<usr>")
+
 def user(usr):
-   mlist =  q1(usr)
-   for i in mlist:
-       print(i)
-       
-       return "User is %s " %(usr)
+
+    mlist = []
+    mlist = q1(usr)  
+
+    for i in mlist:
+        print(i)  
+
+    return "User is %s " %(usr)
     
 
 if __name__ == "__main__":
