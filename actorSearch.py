@@ -74,7 +74,7 @@ def user(usr):
     mlist = []
     mlist = q1(usr)  
 
-    return render_template("results.html", content=mlist)
+    return render_template("results.html", content=mlist, actor=usr)
     
 
 if __name__ == "__main__":
