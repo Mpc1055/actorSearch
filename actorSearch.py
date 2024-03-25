@@ -74,10 +74,7 @@ def user(usr):
     mlist = []
     mlist = q1(usr)  
 
-    for i in mlist:
-        print(i)  
-
-    return "User is %s " %(usr)
+    return render_template("results.html", content=mlist)
     
 
 if __name__ == "__main__":
